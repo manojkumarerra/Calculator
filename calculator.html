@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title> 
+    <style>
+        body {
+            background-color:rgb(0, 0, 0);
+        }
+        .title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+            width: 210px;
+            color: rgb(246, 235, 235);
+            border:solid #ffffff 4px;
+            border-radius: 10px;
+            
+        }
+        input[type="button"] {
+            font: 1em sans-serif;
+            font-size: 60px ;
+            background-color: rgb(0, 59, 101);
+            border-radius: 20px;
+            color:white;
+            border:solid  black 2px;
+            width:100%;
+            border-spacing: 10px;
+        
+        }
+        tbody {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10rem;transform: translateX(190%) translateY(10%);
+            font-size: 20vmin;
+            gap: 1vmin;
+        }
+        input[type="text"] {
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            top: 20%;
+            font-size: 40px;
+            transform: translateY(-50%);
+            border-radius: 6px;
+            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            background-color: rgb(5, 76, 92);
+            border: solid  rgb(247, 239, 239) 2px;
+            color: white;
+            width:25%;
+        }
+
+        td {
+            display:flex;
+           
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Calculator</div>
+    <table border="0">
+       
+        <tr>
+            <td colspan="3"></td><input type="text" id="result"></td>
+        </tr>
+        <div class="cal">
+        <tr>
+            <td><input type="button" value="7" onclick="display('7')"></td>
+            <td><input type="button" value="4" onclick="display('4')"></td>
+            <td><input type="button" value="1" onclick="display('1')"></td>
+            <td><input type="button" value="0" onclick="display('0')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="8" onclick="display('8')"></td>
+            <td><input type="button" value="5" onclick="display('5')"></td>
+            <td><input type="button" value="2" onclick="display('2')"></td>
+            <td><input type="button" value="." onclick="display('.')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="9" onclick="display('9')"></td>
+            <td><input type="button" value="6" onclick="display('6')"></td>
+            <td><input type="button" value="3" onclick="display('3')"></td>
+            <td><input type="button" value="%" onclick="display('%')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="+" onclick="display('+')"></td>
+            <td><input type="button" value="-" onclick="display('-')"></td>
+            <td><input type="button" value="*" onclick="display('*')"></td>
+            <td><input type="button" value="/" onclick="display('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="=" onclick="equate()"></td>
+            <td><input type="button" value="c" onclick="clr('c')"></td>   
+            <td><input type="button" value="(" onclick="display('(')"></td>
+            <td><input type="button" value=")" onclick="display(')')"></td>
+            </tr>
+        </div>
+    </table>
+    <script type="text/javascript">
+        function clr() {
+            document.getElementById("result").value= "";
+        }
+        function display(val) {
+            document.getElementById("result").value+=val;
+        }
+        function equate(){
+            let x = document.getElementById("result").value;
+            let y = eval(x);
+            document.getElementById("result").value = y;
+        }
+    </script>
+</body>
+</html>
