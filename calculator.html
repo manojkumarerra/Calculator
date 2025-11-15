@@ -3,116 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title> 
+    <title>Calculator</title>
     <style>
         body {
-            background-color:rgb(0, 0, 0);
-        }
-        .title {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 40px;
-            margin-bottom: 10px;
-            text-align: center;
-            width: 210px;
-            color: rgb(246, 235, 235);
-            border:solid #ffffff 4px;
-            border-radius: 10px;
-            
-        }
-        input[type="button"] {
-            font: 1em sans-serif;
-            font-size: 60px ;
-            background-color: rgb(0, 59, 101);
-            border-radius: 20px;
-            color:white;
-            border:solid  black 2px;
-            width:100%;
-            border-spacing: 10px;
-        
-        }
-        tbody {
-            display:flex;
+            background-color: rgb(0, 0, 0);
+            font-family: sans-serif;
+            display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 10rem;transform: translateX(190%) translateY(10%);
-            font-size: 20vmin;
-            gap: 1vmin;
-        }
-        input[type="text"] {
-            position: absolute;
-            left: 50%;
-            right: 50%;
-            top: 20%;
-            font-size: 40px;
-            transform: translateY(-50%);
-            border-radius: 6px;
-            transform: translateX(-50%);
-            transform: translateX(-50%) translateY(-50%);
-            background-color: rgb(5, 76, 92);
-            border: solid  rgb(247, 239, 239) 2px;
-            color: white;
-            width:25%;
+            min-height: 90vh;
         }
 
-        td {
-            display:flex;
-           
-            
+        /* Use a main container for easier centering */
+        .calculator-container {
+            width: 350px; /* A more standard width */
         }
+
+        .title {
+            font-size: 40px;
+            margin-bottom: 20px; /* Increased margin */
+            text-align: center;
+            color: rgb(246, 235, 235);
+            border: solid #ffffff 4px;
+            border-radius: 10px;
+            padding: 5px; /* Added padding */
+        }
+
+        /* Style the table itself */
+        table {
+            width: 100%;
+            border-spacing: 10px; /* Use border-spacing for gaps */
+            border-collapse: separate; /* Required for border-spacing */
+        }
+
+        input[type="button"] {
+            font-size: 30px; /* Adjusted font size */
+            background-color: rgb(0, 59, 101);
+            border-radius: 10px; /* Reduced radius */
+            color: white;
+            border: solid black 2px;
+            width: 100%;
+            height: 65px; /* Set a fixed height */
+            cursor: pointer; /* Add pointer on hover */
+        }
+        
+        input[type="button"]:hover {
+            background-color: rgb(0, 89, 151); /* Add a hover effect */
+        }
+
+        input[type="text"] {
+            font-size: 40px;
+            border-radius: 6px;
+            background-color: rgb(5, 76, 92);
+            border: solid rgb(247, 239, 239) 2px;
+            color: white;
+            width: 100%; /* Make it 100% of the cell */
+            box-sizing: border-box; /* Include padding/border in width */
+            text-align: right; /* Align text to the right */
+            padding: 10px; /* Add padding */
+        }
+
+        /* No strange tbody styling needed */
     </style>
 </head>
 <body>
-    <div class="title">Calculator</div>
-    <table border="0">
-       
-        <tr>
-            <td colspan="3"></td><input type="text" id="result"></td>
-        </tr>
-        <div class="cal">
-        <tr>
-            <td><input type="button" value="7" onclick="display('7')"></td>
-            <td><input type="button" value="4" onclick="display('4')"></td>
-            <td><input type="button" value="1" onclick="display('1')"></td>
-            <td><input type="button" value="0" onclick="display('0')"></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="8" onclick="display('8')"></td>
-            <td><input type="button" value="5" onclick="display('5')"></td>
-            <td><input type="button" value="2" onclick="display('2')"></td>
-            <td><input type="button" value="." onclick="display('.')"></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="9" onclick="display('9')"></td>
-            <td><input type="button" value="6" onclick="display('6')"></td>
-            <td><input type="button" value="3" onclick="display('3')"></td>
-            <td><input type="button" value="%" onclick="display('%')"></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="+" onclick="display('+')"></td>
-            <td><input type="button" value="-" onclick="display('-')"></td>
-            <td><input type="button" value="*" onclick="display('*')"></td>
-            <td><input type="button" value="/" onclick="display('/')"></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="=" onclick="equate()"></td>
-            <td><input type="button" value="c" onclick="clr('c')"></td>   
-            <td><input type="button" value="(" onclick="display('(')"></td>
-            <td><input type="button" value=")" onclick="display(')')"></td>
+
+    <div class="calculator-container">
+        <div class="title">Calculator</div>
+        <table border="0">
+            <tr>
+                <td colspan="4">
+                    <input type="text" id="result" readonly> </td>
             </tr>
-        </div>
-    </table>
+
+            <tr>
+                <td><input type="button" value="7" onclick="display('7')"></td>
+                <td><input type="button" value="8" onclick="display('8')"></td>
+                <td><input type="button" value="9" onclick="display('9')"></td>
+                <td><input type="button" value="+" onclick="display('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="display('4')"></td>
+                <td><input type="button" value="5" onclick="display('5')"></td>
+                <td><input type="button" value="6" onclick="display('6')"></td>
+                <td><input type="button" value="-" onclick="display('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="display('1')"></td>
+                <td><input type="button" value="2" onclick="display('2')"></td>
+                <td><input type="button" value="3" onclick="display('3')"></td>
+                <td><input type="button" value="*" onclick="display('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="c" onclick="clr()"></td>
+                <td><input type="button" value="0" onclick="display('0')"></td>
+                <td><input type="button" value="." onclick="display('.')"></td>
+                <td><input type="button" value="/" onclick="display('/')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="(" onclick="display('(')"></td>
+                <td><input type="button" value=")" onclick="display(')')"></td>
+                <td><input type="button" value="%" onclick="display('%')"></td>
+                <td><input type="button" value="=" onclick="equate()"></td>
+            </tr>
+        </table>
+    </div>
+
     <script type="text/javascript">
+        // Clears the display
         function clr() {
-            document.getElementById("result").value= "";
+            document.getElementById("result").value = "";
         }
+
+        // Appends the clicked value to the display
         function display(val) {
-            document.getElementById("result").value+=val;
+            document.getElementById("result").value += val;
         }
-        function equate(){
+
+        // Calculates the result - SAFER VERSION
+        function equate() {
             let x = document.getElementById("result").value;
-            let y = eval(x);
+            
+            // Handle percentage (%) sign by converting it to /100
+            // This is a simple implementation
+            x = x.replace(/%/g, '/100');
+            
+            let y;
+            try {
+                // Use new Function() instead of eval()
+                // This is much safer as it doesn't access the local scope
+                y = new Function('return ' + x)();
+            } catch (e) {
+                // If the expression is invalid (e.g., "5++5"), show "Error"
+                y = "Error";
+            }
+            
             document.getElementById("result").value = y;
         }
     </script>
